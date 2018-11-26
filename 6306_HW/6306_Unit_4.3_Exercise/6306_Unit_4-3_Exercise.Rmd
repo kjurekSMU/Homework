@@ -1,0 +1,72 @@
+---
+title: "6306_Unit_4-3_Exercise"
+author: "Karl J. Jurek"
+date: "November 26, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## ZillowR API
+
+| 1. Reference Manual: ZillowR.pdf
+|       https://cran.r-project.org/web/packages/ZillowR/ZillowR.pdf
+| 2. Requirements:  
+|       A. zws_id
+|                   1) Register at: http://www.zillow.com/webservice/Registration.htm
+|       B. zpid (depending on the request you make)
+|                   EXAMPLE:  To get a zpid go to the Zillow website and select a property.  Then pull the zpid from the URL.
+|                             https://www.zillow.com/homes/for_sale/Layton-UT/119633298_zpid/57030_rid/500000-_price/2070-_mp/globalrelevanceex_sort/41.123946,-111.89013,41.069096,-111.982398_rect/13_zm/0_mmm/
+| 
+| 3. Installation: 
+|       A. install.packages("ZillowR", dependencies=TRUE)
+|       B. library(ZillowR)
+|       C. library(XML)
+
+```{r installation, echo=TRUE}
+#install.packages("ZillowR", dependencies=TRUE, repos="http://cran.us.r-project.org")
+#library(ZillowR)
+```
+
+## EXAMPLE
+
+| The following code was acquired from: https://stackoverflow.com/questions/38817153/zillow-api-with-r-xml-issue
+| To make the code work there are a couple of things to note:
+|       1. You will need to put in your own <b>zws_id</b>
+|       2. If you change the address you will need to re-source the script code.
+
+```{r script_window, echo=TRUE}
+#This code will be placed in the Script window
+#getValRange <- function(x, hilo) {
+#  ifelse(hilo %in% unlist(dimnames(x)), x["text",hilo][[1]], NA)
+#}
+
+#out <- apply(zresults_list, MAR=2, function(property) {
+#  zpid <- property$zpid
+#  links <- unlist(property$links)
+#  address <- unlist(property$address)
+#  z <- property$zestimate
+#  zestdf <- list(
+#    amount=ifelse("text" %in% names(z$amount), z$amount$text, NA),
+#    lastupdated=z$"last-updated",
+#    valueChange=ifelse(length(z$valueChange)==0, NA, z$valueChange),
+#    valueLow=getValRange(z$valuationRange, "low"),
+#    valueHigh=getValRange(z$valuationRange, "high"),
+#    percentile=z$percentile)  
+#  list(id=zpid, links, address, zestdf)
+#})
+
+#zdata <- as.data.frame(do.call(rbind, lapply(out, unlist)), row.names=seq_len(length(out)))
+#zdata
+```
+
+```{r console, echo=TRUE}
+#Get search results
+#zresults=GetSearchResults(address='411 E 6th St', citystatezip='10009', rentzestimate = FALSE, zws_id ="[YOUR_ZWS_ID]", url="http://www.zillow.com/webservice/GetSearchResults.htm")
+
+#zresults_list<- xmlToList(zresults$response[["results"]])
+#zdata <- as.data.frame(do.call(rbind, lapply(out, unlist)), row.names=seq_len(length(out)))
+#write.csv(zdata, "NY_Zillow_Data.csv", na="NA")
+```
