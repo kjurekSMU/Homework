@@ -335,7 +335,7 @@ install.packages("fivethirtyeight", dependencies=TRUE, repos="http://cran.us.r-p
 ## package 'fivethirtyeight' successfully unpacked and MD5 sums checked
 ## 
 ## The downloaded binary packages are in
-## 	C:\Users\kjjur\AppData\Local\Temp\RtmpCsggRA\downloaded_packages
+## 	C:\Users\kjjur\AppData\Local\Temp\RtmpOKfuyo\downloaded_packages
 ```
 
 ```r
@@ -411,7 +411,7 @@ install.packages('rvest', dependencies=TRUE, repos="http://cran.us.r-project.org
 ## package 'rvest' successfully unpacked and MD5 sums checked
 ## 
 ## The downloaded binary packages are in
-## 	C:\Users\kjjur\AppData\Local\Temp\RtmpCsggRA\downloaded_packages
+## 	C:\Users\kjjur\AppData\Local\Temp\RtmpOKfuyo\downloaded_packages
 ```
 
 ```r
@@ -599,3 +599,45 @@ Write the fivethirtyeight data to a csv file. Make sure that it does not have ro
 #Creates a .csv file with the information from the 'new_order' dataframe in the working directory
 write.csv(new_order, file="Count_of_Major_Categories.csv", row.names=FALSE, na="NA")
 ```
+
+|
+## Question 6:
+Codebook (30 points):
+
+|
+## Question 6A:
+Start a new repository on GitHub for your SMU MSDS homework. On your local
+device, make sure there is a directory for Homework at the minimum; you are
+welcome to add whatever you would like to this repo in addition to your requirements
+here.
+
+|       <b>ANSWER:</b>
+|               https://github.com/kjurekSMU/Homework/tree/2018-11-26_HW_Start/6306_HW/6306_Unit_3_HW
+
+|
+## Question 6B:
+Create a README.md file which explains the purpose of the repository, the topics
+included, the sources for the material you post, and contact information in case of
+questions. Remember, the one in the root directory should be general. You are
+welcome to make short READMEs for each assignment individually in other folders.
+
+|       <b>ANSWER:</b>
+|               https://github.com/kjurekSMU/Homework/blob/2018-11-26_HW_Start/6306_HW/6306_Unit_3_HW/README.md
+
+## Question 6C:
+In one (or more) of the nested directories, post your RMarkdown script, HTML file,
+and data from ‘fivethirtyeight.’ Make sure that in your README or elsewhere that
+you credit fivethirtyeight in some way.
+
+|       <b>ANSWER:</b>
+|               https://github.com/kjurekSMU/Homework/tree/2018-11-26_HW_Start/6306_HW/6306_Unit_3_HW
+
+## Question 6D:
+In your RMarkdown script, please provide the link to this GitHub so the grader can see
+it.
+
+|       <b>ANSWER:</b>
+|               https://github.com/kjurekSMU/Homework/tree/2018-11-26_HW_Start/6306_HW/6306_Unit_3_HW
+|
+|
+|
