@@ -1,4 +1,4 @@
-##6306_Unit_4.3_Exercise
+6306_Unit_4.3_Exercise
 
 This directory contains the files used to answer the Exercise in the videos for Unit 4.3
 
