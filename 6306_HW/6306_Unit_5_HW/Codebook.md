@@ -44,7 +44,7 @@ girls | 03 | Count_2016 | -----
 girls | 04 | Count_2016 | -----
 girls | 05 | Total | -----
 
- <br />
+<br />
 1. Data Frame Populating Code <br />
 <br />
 1.A. df <br />
@@ -61,3 +61,9 @@ girls | 05 | Total | -----
 <br />
 1.E. girls <br />
 1.E.1) girls=final[grepl("F", final$Gender),] <br />
+
+### OUTPUT FILES
+
+1. Top_10_Girl_Names.csv <br />
+<br />
+1.A. write.csv(girls[1:10, c(1,5)], file="Top_10_Girl_Names.csv", row.names=FALSE)
