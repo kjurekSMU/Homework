@@ -1,7 +1,7 @@
-Class: MSDS-6306
-Unit: 5
-Purpose: The '6306_Unit_5_HW' directory contains all the directories and files required to answer the questions in the 'HW5.pdf' file.
-Contact: For any questions please log an Issue 
+<b>Class:</b> MSDS-6306<br />
+<b>Unit:</b> 5<br />
+<b>Purpose:</b> The '6306_Unit_5_HW' directory contains all the directories and files required to answer the questions in the 'HW5.pdf' file.<br />
+<b>Contact:</b> For any questions please log an Issue<br />
 
 
 Files in 6306_Unit_5_HW Directory:
