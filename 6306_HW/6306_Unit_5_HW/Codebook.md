@@ -46,7 +46,7 @@ girls | 05 | Total | -----
 
  <br />
 1. Data Frame Populating Code <br />
-
+<br />
 1.A. df <br />
 1.A.1) df=read.delim("https://raw.githubusercontent.com/kjurekSMU/Homework/2018-11-26_HW_Start/6306_HW/6306_Unit_5_HW/yob2016.txt", header=FALSE, sep=";", stringsAsFactors=FALSE) <br />
 
