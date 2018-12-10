@@ -38,6 +38,9 @@ Number | Original Name | Valid Name | Cleaned Name
 1 | (not in yob2016.txt) | (not in yob2016.txt) | Name
 2 | (not in yob2016.txt) | (not in yob2016.txt) | Gender
 3 | (not in yob2016.txt) | (not in yob2016.txt) | Count
+        </ul>
+    </ul>
+</ul>
 
 2. y2016
 <ul>
@@ -54,6 +57,9 @@ Number | Original Name | Valid Name | Cleaned Name
 1 | Name | Name | ----
 2 | Gender | Gender | ----
 3 | Count | Count | ----
+        </ul>
+    </ul>
+</ul>
 
 3. y2015
 <ul>
@@ -70,6 +76,9 @@ Number | Original Name | Valid Name | Cleaned Name
 1 | (not in yob2015.txt) | (not in yob2015.txt) | Name
 2 | (not in yob2015.txt) | (not in yob2015.txt) | Gender
 3 | (not in yob2015.txt) | (not in yob2015.txt) | Count
+        </ul>
+    </ul>
+</ul>
 
 4. final
 <ul>
