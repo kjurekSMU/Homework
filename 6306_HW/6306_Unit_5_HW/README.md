@@ -4,13 +4,10 @@ Purpose: The '6306_Unit_5_HW' directory contains all the directories and files r
 Contact: For any questions please log an Issue 
 
 
-Files in 6306_Unit_4.3_Exercise Directory:
-1.  6306-Unit_4.3_Exercise.pptx
-2.  6306_Unit_4-3_Exercise.Rmd
-3.  6306_Unit_4-3_Exercise.html
-4.  LA_Zillow_Data.csv
-5.  NY_Zillow_Data.csv
-6.  SLC_Zillow_Data.csv
-7.  ZillowR.pdf
-8.  Zillow_Code.R
-9.  Zillow_Data.csv
+Files in 6306_Unit_5_HW Directory:
+1.  6306_Unit_5_HW.Rproj
+2.  HW5.pdf
+3.  KJurek_Livesession5assignment.Rmd
+4.  KJurek_Livesession5assignment.html
+5.  README.md
+6.  Top_10_Girl_Names.csv
