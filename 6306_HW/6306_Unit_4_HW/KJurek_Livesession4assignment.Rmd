@@ -1,0 +1,252 @@
+---
+title: "KJurek_Livesession4assignment"
+author: "Karl J. Jurek"
+date: "December 3, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Question 1 Harry Potter Cast (50%)
+
+## Question 1A: 
+In the IMDB, there are listings of full cast members for movies. Navigate to
+http://www.imdb.com/title/tt1201607/fullcredits?ref_=tt_ql_1. Feel free to View Source to get a
+good idea of what the page looks like in code.
+
+```{r question_1A, echo=TRUE}
+# Parsing of HTML/XML files
+library(rvest)
+# General-purpose data wrangling
+library(tidyverse)
+# String manipulation
+library(stringr)
+# Verbose regular expressions
+library(rebus)
+# Creation of graphics
+library(ggplot2)
+# Data manipulation
+library(dplyr)
+# Time data manipulation
+library(xts)
+# Piping notation
+library(magrittr)
+```
+
+
+## Question 1B: 
+Scrape the page with any R package that makes things easy for you. Of particular interest
+is the table of the Cast in order of crediting. Please scrape this table (you might have to fish it out of
+several of the tables from the page) and make it a data.frame() of the Cast in your R environment
+
+```{r question_1B, echo=TRUE}
+# Setting the website we are going to be gathering data from
+URL="http://www.imdb.com/title/tt1201607/fullcredits?ref_=tt_ql_1"
+# Getting the HTML from the website
+hp_html=read_html(URL, options="NOBLANKS")
+# Placing just the tables into 'hp_table'
+hp_table=hp_html %>% html_nodes("table") %>% html_table()
+# Putting just the cast data into a data frame
+cast_df=as.data.frame(hp_table[3])
+# Validating the desired results
+head(cast_df)
+```
+
+## Question 1C:  Clean up the table
+
+### Question 1C-1:
+It should not have blank observations or rows, a row that should be column names, or just ‘…’
+```{r question_1C-1, echo=TRUE}
+# Removing unnecessary columns from the data frame
+cast_df=cast_df[-c(1,3)]
+# Validating the desired results
+cast_df[c(11, 34, 93),]
+```
+
+### Question 1C-2:
+It should have intuitive column names (ideally 2 to start – Actor and Character)
+```{r question_1C-2, echo=TRUE}
+# Giving the columns in the data frame useful names
+names(cast_df)<-c("Actor", "Character")
+# Validating the desired results
+cast_df[c(11, 34, 93),]
+```
+
+### Question 1C-3:
+In the film, Mr. Warwick plays two characters, which makes his row look a little weird. Please replace his character column with just “Griphook / Professor Filius Flitwick” to make it look better.
+```{r question_1C-3, echo=TRUE}
+# Removing unnecessary 'next line' indicators
+cast_df$Character=gsub("\r?\n|\r", "", cast_df$Character)
+# Removing the extra spacing specifically in row 11
+cast_df$Character=gsub("            ", "", cast_df$Character)
+# Removing extra spacing through the 'Character' column
+cast_df$Character=gsub("  ", "", cast_df$Character)
+# Validating the desired results
+cast_df[c(11, 34, 93),]
+
+```
+
+### Question 1C-4:
+One row might result in “Rest of cast listed alphabetically” – remove this observation.
+```{r question_1C-4, echo=TRUE}
+cast_df=cast_df[-c(93), ]
+# Validating the desired results
+cast_df[c(11, 34, 93),]
+```
+
+## Question 1D:
+Split the Actor’s name into two columns: FirstName and Surname. Keep in mind that
+some actors/actresses have middle names as well. Please make sure that the middle names are in the
+FirstName column, in addition to the first name (example: given the Actor Frank Jeffrey Stevenson,
+the FirstName column would say “Frank Jeffrey.”)
+```{r question_1D, echo=TRUE}
+# Removing empty first row
+cast_df=cast_df[-c(1),]
+# Extracting all but the surname from the 'Actor' column
+FNames=as.data.frame(unlist(str_extract_all(cast_df$Actor, ".*[^a-zA-Z]+")))
+# Extracting all surname from the 'Actor' column
+Surnames=as.data.frame(word(cast_df$Actor, -1))
+# Placing the first names, surnames, and character in a new data field
+new_cast_df=cbind(FNames, Surnames, cast_df$Character)
+# Giving the columns in the data frame useful names
+names(new_cast_df)=c("FName", "Surname", "Character")
+# Validating the desired results
+new_cast_df[c(1, 12, 81),]
+```
+
+## Question 1 SportsBall (50%)
+
+## Question 2A: 
+On the ESPN website, there are statistics of each NBA player. Navigate to the San Antonio
+Spurs current statistics (likely http://www.espn.com/nba/team/stats/_/name/sa/san-antonio-spurs).
+You are interested in the Shooting Statistics table.
+
+```{r question_2A, echo=TRUE}
+# Setting the website we are going to be gathering data from
+URL="http://www.espn.com/nba/team/stats/_/name/sa/san-antonio-spurs"
+```
+
+## Question 2B: 
+Scrape the page with any R package that makes things easy for you. There are a few tables
+on the page, so make sure you are targeting specifically the Shooting Statistics table.
+
+```{r question_2B, echo=TRUE}
+# Getting the HTML from the website
+sa_html=read_html(URL, options="NOBLANKS")
+# Placing just the tables into 'sa_table'
+sa_table=sa_html %>% html_nodes("table") %>% html_table()
+```
+
+## Question 2C: 
+Clean up the table (You might get some warnings if you’re working with tibbles)
+
+## Question 2C-1: 
+You’ll want to create an R data.frame() with one observation for each player. Make sure
+that you do not accidentally include blank rows, a row of column names, or the Totals row in the
+table as observations.
+
+```{r question_2C-1, echo=TRUE}
+# Putting just the 'Shooting Statistics' data into a data frame
+ss_df=as.data.frame(sa_table[2])
+# Removing non-data first and second rows, and the last row 'Totals'
+ss_df=ss_df[-c(1:2, 17),]
+# Creating a variable to hold the column names for the 'ss_df' data frame
+col_names=c("Player", "FGM", "FGA", "FG%", "3PM", "3PA", "3P%", "FTM", "FTA", "FT%", "2PM", "2PA", "2P%", "PPS", "AFG%")
+# Adding the column names to the 'ss_df' data frame
+names(ss_df)=col_names
+# Validating results
+head(ss_df, 3)
+tail(ss_df, 3)
+```
+
+## Question 2C-2: 
+The column PLAYER has two variables of interest in it: the player’s name and their
+position, denoted by 1-2 letters after their name. Split the cells into two columns, one with Name
+and the other Position.
+```{r question_2C-2, echo=TRUE}
+# Getting the position from 'ss_df' and placing in its own data frame
+position=as.data.frame(word(ss_df$Player, -1), stringsAsFactors=FALSE)
+# Placing the players from 'ss_df' and placing them in their own data frame
+player=as.data.frame(word(ss_df$Player, 1, 2), stringsAsFactors=FALSE)
+# Removing unnecessary ',' from the player's name
+player$`word(ss_df$Player, 1, 2)`=gsub(",", "", player$`word(ss_df$Player, 1, 2)`)
+# Adding useful column name to the 'player' data frame
+names(player)="Name"
+# Adding useful column name to the 'position' data frame
+names(position)="Position"
+# Combining all necessary columns into one data frame 'new_ss_df'
+new_ss_df=cbind(player, position, ss_df[2:15])
+# Validating results
+head(new_ss_df)
+
+```
+
+## Question 2C-3: 
+Check the data type of all columns. Convert relevant columns to numeric. Check the data
+type of all columns again to confirm that they have changed!
+```{r question_2C-3, echo=TRUE}
+# Checking the data type of the columns
+str(new_ss_df)
+# Changing the following columns from 'chr' class to 'num' class
+new_ss_df$`FGM`=as.numeric(new_ss_df$`FGM`)
+new_ss_df$`FGA`=as.numeric(new_ss_df$`FGA`)
+new_ss_df$`FG%`=as.numeric(new_ss_df$`FG%`)
+new_ss_df$`3PM`=as.numeric(new_ss_df$`3PM`)
+new_ss_df$`3PA`=as.numeric(new_ss_df$`3PA`)
+new_ss_df$`3P%`=as.numeric(new_ss_df$`3P%`)
+new_ss_df$`FTM`=as.numeric(new_ss_df$`FTM`)
+new_ss_df$`FTA`=as.numeric(new_ss_df$`FTA`)
+new_ss_df$`FT%`=as.numeric(new_ss_df$`FT%`)
+new_ss_df$`2PM`=as.numeric(new_ss_df$`2PM`)
+new_ss_df$`2PA`=as.numeric(new_ss_df$`2PA`)
+new_ss_df$`2P%`=as.numeric(new_ss_df$`2P%`)
+new_ss_df$`PPS`=as.numeric(new_ss_df$`PPS`)
+new_ss_df$`AFG%`=as.numeric(new_ss_df$`AFG%`)
+str(new_ss_df)
+```
+
+## Question 2D:
+Create a colorful bar chart that shows the Field Goals Percentage Per Game for each
+person. It will be graded on the following criteria:
+```{r question_2D, echo=TRUE}
+ggplot(new_ss_df, aes(x=new_ss_df$Name, y=new_ss_df$`FG%`)) + geom_bar(position="dodge",stat="identity")
+```
+
+## Question 2D-1:
+Informative Title, centered
+```{r question_2D-1, echo=TRUE}
+# Adding: + ggtitle("Field Goal Percentage per Game") + theme(plot.title = element_text(hjust = 0.5))
+ggplot(new_ss_df, aes(x=new_ss_df$Name, y=new_ss_df$`FG%`)) + geom_bar(position="dodge",stat="identity") + ggtitle("Field Goal Percentage per Game") + theme(plot.title = element_text(hjust = 0.5))
+```
+
+## Question 2D-2:
+Relevant x and y axis labels (not simply variables names!)
+```{r question_2D-2, echo=TRUE}
+# Creating variables for the x and y labels
+x_label="Player"
+y_label="Field Goal Percentage"
+# Adding: + labs(x=x_label, y=y_label)
+ggplot(new_ss_df, aes(x=new_ss_df$Name, y=new_ss_df$`FG%`)) + geom_bar(position="dodge",stat="identity") + ggtitle("Field Goal Percentage per Game") + theme(plot.title = element_text(hjust = 0.5)) + labs(x=x_label, y=y_label)
+```
+
+## Question 2D-3:
+Human-readable axes with no overlap (you might have to flip x and y to fix that).
+Note: You do not have to convert the decimal to a percentage.
+```{r question_2D-3, echo=TRUE}
+# Adding: + coord_flip()
+ggplot(new_ss_df, aes(x=new_ss_df$Name, y=new_ss_df$`FG%`)) + geom_bar(position="dodge",stat="identity") + ggtitle("Field Goal Percentage per Game") + theme(plot.title = element_text(hjust = 0.5)) + labs(x=x_label, y=y_label) + coord_flip()
+```
+
+## Question 2D-4:
+Color the columns by the team member’s position (so, all PF’s should have the same color, etc.)    
+```{r question_2D-4, echo=TRUE}
+# Adding: fill=factor(new_ss_df$Position) 
+# to the 'aes' section
+# Adding: fill=fill_label 
+# to the 'labs' section
+# Creating the fill_label 
+fill_label="Position"
+ggplot(new_ss_df, aes(x=new_ss_df$Name, y=new_ss_df$`FG%`, fill=factor(new_ss_df$Position))) + geom_bar(position="dodge",stat="identity") + ggtitle("Field Goal Percentage per Game") + theme(plot.title = element_text(hjust = 0.5)) + labs(x=x_label, y=y_label, fill=fill_label) + coord_flip()
+```
