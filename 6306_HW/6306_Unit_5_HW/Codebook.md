@@ -1,4 +1,4 @@
-## CODEBOOK FOR: 6306 Unit 5 Homework
+## CODE BOOK FOR: 6306 Unit 5 Homework
 
 ### RAW FILES
 
