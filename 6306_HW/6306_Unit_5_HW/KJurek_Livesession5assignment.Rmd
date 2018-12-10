@@ -23,8 +23,8 @@ First, import the .txt file into R so you can process it. Keep in mind this is n
 You might have to open the file to see what you’re dealing with.
 
 ```{r question_1A-1, echo=TRUE}
-# Uploading the 'yob2016.txt' file into the 'df' data frame
-df=read.delim("C:\\Users\\kjjur\\Dropbox\\SMU\\6306-Doing_Data_Science\\6306-Unit_05\\yob2016.txt", header=FALSE, sep=";", stringsAsFactors=FALSE)
+# Uploading the 'yob2016.txt' file from my GitHub directory into the 'df' data frame
+df=read.delim("https://raw.githubusercontent.com/kjurekSMU/Homework/2018-11-26_HW_Start/6306_HW/6306_Unit_5_HW/yob2016.txt", header=FALSE, sep=";", stringsAsFactors=FALSE)
 ```
 
 #### Question 1A-2:     
@@ -74,8 +74,8 @@ You might have to change some options to import it properly.
 Again, please give the dataframe human-readable column names. Assign the dataframe to y2015.
 
 ```{r question_2A, echo=TRUE}
-# Uploading the 'yob2016.txt' file into the 'df' data frame
-y2015=read.delim("C:\\Users\\kjjur\\Dropbox\\SMU\\6306-Doing_Data_Science\\6306-Unit_05\\yob2015.txt", header=FALSE, sep=",", stringsAsFactors=FALSE)
+# Uploading the 'yob2016.txt' file from my GitHub directory into the 'df' data frame
+y2015=read.delim("https://raw.githubusercontent.com/kjurekSMU/Homework/2018-11-26_HW_Start/6306_HW/6306_Unit_5_HW/yob2015.txt", header=FALSE, sep=",", stringsAsFactors=FALSE)
 # Assigning useful names to the columns in the 'df' data frame
 names(y2015)=c("Name", "Gender", "Count")
 # Validating the structure of the new data frame 'y2015'
@@ -88,7 +88,7 @@ str(y2015)
 Display the last ten rows in the dataframe. 
 
 ```{r question_2B-1, echo=TRUE}
-tail(y2016, 10)
+tail(y2015, 10)
 ```
 
 #### Question 2B-2:
@@ -177,4 +177,13 @@ contained in. You are welcome and encouraged to add other files—just make sure
 and directions that are helpful for the grader.
 
 |       <b> ANSWER: </b>
-|               See GitHub directory:  
+|               See GitHub directory:  https://github.com/kjurekSMU/Homework/tree/2018-11-26_HW_Start/6306_HW/6306_Unit_5_HW
+|
+|
+|
+|
+|
+|
+|
+|
+| #######END OF DOCUMENT#######
