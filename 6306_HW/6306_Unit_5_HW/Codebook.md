@@ -64,6 +64,6 @@ girls | 05 | Total | -----
 
 ### OUTPUT FILES
 
+
 1. Top_10_Girl_Names.csv <br />
-<br />
-1.A. write.csv(girls[1:10, c(1,5)], file="Top_10_Girl_Names.csv", row.names=FALSE)
+1.A. write.csv(girls[1:10, c(1,5)], file="Top_10_Girl_Names.csv", row.names=FALSE) <br />
