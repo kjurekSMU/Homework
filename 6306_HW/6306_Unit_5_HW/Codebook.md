@@ -17,59 +17,42 @@
 2.B.3) Column 3: Count (number of children born given this name) <br />
   
 ### DATA FRAMES
-1. df <br />
-1.A. Populating code: <br />
-<br />
-df=read.delim("https://raw.githubusercontent.com/kjurekSMU/Homework/2018-11-26_HW_Start/6306_HW/6306_Unit_5_HW/yob2016.txt", header=FALSE, sep=";", stringsAsFactors=FALSE)<br />
-<br />
-1.B. Header / Column / Variables <br />
 
-Number | Original Name | Valid Name | Cleaned Name
-:-------: | --------| --------- | ------------------------- 
-1 | (not in yob2016.txt) | (not in yob2016.txt) | Name
-2 | (not in yob2016.txt) | (not in yob2016.txt) | Gender
-3 | (not in yob2016.txt) | (not in yob2016.txt) | Count
+Data Frame | Number | Original Name | Cleaned Name
+:-------: | --------| --------| ---------  
+df | 01 | (not in yob2016.txt) | Name
+df | 02 | (not in yob2016.txt) | Gender
+df | 03 | (not in yob2016.txt) | Count
+----- | -----| -----| ----- | ----- 
+y2016 | 01 | (not in yob2016.txt) | Name
+y2016 | 02 | (not in yob2016.txt) | Gender
+y2016 | 03 | (not in yob2016.txt) | Count
+----- | -----| -----| ----- 
+y2015 | 01 | (not in yob2015.txt) | Name
+y2015 | 02 | (not in yob2015.txt) | Gender
+y2015 | 03 | (not in yob2015.txt) | Count
+----- | -----| -----| ----- 
+final | 01 | Name | -----
+final | 02 | Gender | -----
+final | 03 | Count.x | Count_2016
+final | 04 | Count.y | Count_2015
+final | 05 | (not present) | Total
+----- | -----| -----| ----- 
+girls | 01 | Name | -----
+girls | 02 | Gender | -----
+girls | 03 | Count_2016 | -----
+girls | 04 | Count_2016 | -----
+girls | 05 | Total | -----
 
-2. y2016 <br />
-2.A. Populating code: <br />
-y2016=df[-212,]<br />
-<br />
-2.B. Header / Column / Variables
-
-Number | Original Name | Valid Name | Cleaned Name
-:-------: | --------| --------- | ------------------------- 
-1 | Name | Name | ----
-2 | Gender | Gender | ----
-3 | Count | Count | ----
-
-3. y2015 <br />
-3.A. Populating code: <br />
-<br />
-y2015=read.delim("https://raw.githubusercontent.com/kjurekSMU/Homework/2018-11-26_HW_Start/6306_HW/6306_Unit_5_HW/yob2015.txt", header=FALSE, sep=",", stringsAsFactors=FALSE)<br />
-<br />
-3.B. Header / Column / Variables <br />
-<br />
-
-Number | Original Name | Valid Name | Cleaned Name
-:-------: | --------| --------- | ------------------------- 
-1 | (not in yob2015.txt) | (not in yob2015.txt) | Name
-2 | (not in yob2015.txt) | (not in yob2015.txt) | Gender
-3 | (not in yob2015.txt) | (not in yob2015.txt) | Count
-
-4. final <br />
-4.A. Populating code: <br />
-<br />
-final=merge(y2016, y2015, by.x=c("Name", "Gender"), by.y=c("Name", "Gender"))<br />
-<br />
-4.B. Header / Column / Variables <br />
-
-Number | Original Name | Valid Name | Cleaned Name
-:-------: | --------| --------- | ------------------------- 
-1 | Name | Name | ----
-2 | Gender | Gender) | ----
-3 | Count.x | Count | Count_2016
-4 | Count.y | Count | Count_2015
-5 | (not present) | (not present) | Total
-<br />
-4.B.1) Total code <br />
-4.B.1)A) final$Total=final$Count.x + final$Count.y <br />
+1. Populating Code
+1.A. df
+1.A.1) df=read.delim("https://raw.githubusercontent.com/kjurekSMU/Homework/2018-11-26_HW_Start/6306_HW/6306_Unit_5_HW/yob2016.txt", header=FALSE, sep=";", stringsAsFactors=FALSE)
+1.B. y2016
+1.B.1) y2016=df[-212,]
+1.C. y2015
+1.C.1) y2015=read.delim("https://raw.githubusercontent.com/kjurekSMU/Homework/2018-11-26_HW_Start/6306_HW/6306_Unit_5_HW/yob2015.txt", header=FALSE, sep=",", stringsAsFactors=FALSE)
+1.D. final
+1.D.1) final=merge(y2016, y2015, by.x=c("Name", "Gender"), by.y=c("Name", "Gender"))
+1.E. girls
+1.E.1) girls=final[grepl("F", final$Gender),]
+1.E.1)
