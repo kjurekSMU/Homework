@@ -6,10 +6,11 @@
 
 Files in 6306_Unit_5_HW Directory:
 1.  6306_Unit_5_HW.Rproj
-2.  HW5.pdf
-3.  KJurek_Livesession5assignment.Rmd
-4.  KJurek_Livesession5assignment.html
-5.  README.md
-6.  Top_10_Girl_Names.csv
-7.  yob2015.txt
-8.  yob2016.txt
+2.  Codebook.md
+3.  HW5.pdf
+4.  KJurek_Livesession5assignment.Rmd
+5.  KJurek_Livesession5assignment.html
+6.  README.md
+7.  Top_10_Girl_Names.csv
+8.  yob2015.txt
+9.  yob2016.txt
