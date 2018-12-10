@@ -49,15 +49,15 @@ girls | 05 | Total | -----
 <br />
 1.A. df <br />
 1.A.1) df=read.delim("https://raw.githubusercontent.com/kjurekSMU/Homework/2018-11-26_HW_Start/6306_HW/6306_Unit_5_HW/yob2016.txt", header=FALSE, sep=";", stringsAsFactors=FALSE) <br />
-
+<br />
 1.B. y2016 <br />
 1.B.1) y2016=df[-212,] <br />
-
+<br />
 1.C. y2015 <br />
 1.C.1) y2015=read.delim("https://raw.githubusercontent.com/kjurekSMU/Homework/2018-11-26_HW_Start/6306_HW/6306_Unit_5_HW/yob2015.txt", header=FALSE, sep=",", stringsAsFactors=FALSE) <br />
-
+<br />
 1.D. final <br />
 1.D.1) final=merge(y2016, y2015, by.x=c("Name", "Gender"), by.y=c("Name", "Gender")) <br />
-
+<br />
 1.E. girls <br />
 1.E.1) girls=final[grepl("F", final$Gender),] <br />
