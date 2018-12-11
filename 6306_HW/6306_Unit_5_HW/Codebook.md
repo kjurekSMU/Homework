@@ -18,7 +18,7 @@
   
 ### DATA FRAMES
 
-Data Frame | Number | Original Name | Cleaned Name
+Data Frame | Number | Original Name | New Name
 :-------: | --------| --------| ---------  
 df | 01 | (not in yob2016.txt) | Name
 df | 02 | (not in yob2016.txt) | Gender
@@ -44,26 +44,30 @@ girls | 03 | Count_2016 | -----
 girls | 04 | Count_2016 | -----
 girls | 05 | Total | -----
 
+### DATA FRAMES POPULATING CODE
+
+1. df <br />
+1.A df=read.delim("https://raw.githubusercontent.com/kjurekSMU/Homework/2018-11-26_HW_Start/6306_HW/6306_Unit_5_HW/yob2016.txt", header=FALSE, sep=";", stringsAsFactors=FALSE) <br />
 <br />
-1. Data Frame Populating Code <br />
+2. y2016 <br />
+2.A y2016=df[-212,] <br />
 <br />
-1.A. df <br />
-1.A.1) df=read.delim("https://raw.githubusercontent.com/kjurekSMU/Homework/2018-11-26_HW_Start/6306_HW/6306_Unit_5_HW/yob2016.txt", header=FALSE, sep=";", stringsAsFactors=FALSE) <br />
+3. y2015 <br />
+3.A. y2015=read.delim("https://raw.githubusercontent.com/kjurekSMU/Homework/2018-11-26_HW_Start/6306_HW/6306_Unit_5_HW/yob2015.txt", header=FALSE, sep=",", stringsAsFactors=FALSE) <br />
 <br />
-1.B. y2016 <br />
-1.B.1) y2016=df[-212,] <br />
+4. final <br />
+4.A. final=merge(y2016, y2015, by.x=c("Name", "Gender"), by.y=c("Name", "Gender")) <br />
 <br />
-1.C. y2015 <br />
-1.C.1) y2015=read.delim("https://raw.githubusercontent.com/kjurekSMU/Homework/2018-11-26_HW_Start/6306_HW/6306_Unit_5_HW/yob2015.txt", header=FALSE, sep=",", stringsAsFactors=FALSE) <br />
-<br />
-1.D. final <br />
-1.D.1) final=merge(y2016, y2015, by.x=c("Name", "Gender"), by.y=c("Name", "Gender")) <br />
-<br />
-1.E. girls <br />
-1.E.1) girls=final[grepl("F", final$Gender),] <br />
+5. girls <br />
+5.A. girls=final[grepl("F", final$Gender),] <br />
+
+### VARIABLES / COLUMNS POPULATING CODE
+
+1. Data Frame: final<br />
+1.A Column:  Total<br />
+1.A.1) Code: final$Total=final$Count.x + final$Count.y <br />
 
 ### OUTPUT FILES
-
 
 1. Top_10_Girl_Names.csv <br />
 1.A. write.csv(girls[1:10, c(1,5)], file="Top_10_Girl_Names.csv", row.names=FALSE) <br />
