@@ -18,7 +18,7 @@
   
 ### DATA FRAMES
 
-Data Frame | Number | Original Name | New Name
+Data Frame | Number | Original Name | Adjusted Name
 :-------: | --------| --------| ---------  
 df | 01 | (not in yob2016.txt) | Name
 df | 02 | (not in yob2016.txt) | Gender
@@ -41,7 +41,7 @@ final | 05 | (not present) | Total
 girls | 01 | Name | -----
 girls | 02 | Gender | -----
 girls | 03 | Count_2016 | -----
-girls | 04 | Count_2016 | -----
+girls | 04 | Count_2015 | -----
 girls | 05 | Total | -----
 
 ### DATA FRAMES POPULATING CODE
