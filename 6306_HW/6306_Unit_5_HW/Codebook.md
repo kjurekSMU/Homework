@@ -24,9 +24,9 @@ df | 01 | (not in yob2016.txt) | Name
 df | 02 | (not in yob2016.txt) | Gender
 df | 03 | (not in yob2016.txt) | Count
 ----- | -----| -----| ----- | ----- 
-y2016 | 01 | (not in yob2016.txt) | Name
-y2016 | 02 | (not in yob2016.txt) | Gender
-y2016 | 03 | (not in yob2016.txt) | Count
+y2016 | 01 | Name | -----
+y2016 | 02 | Gender | -----
+y2016 | 03 | Count | -----
 ----- | -----| -----| ----- 
 y2015 | 01 | (not in yob2015.txt) | Name
 y2015 | 02 | (not in yob2015.txt) | Gender
